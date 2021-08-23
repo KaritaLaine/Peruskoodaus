@@ -7,7 +7,7 @@ henkilotunnus = input('Anna henkilötunnus: ')
 henkilotunnus = henkilotunnus.upper()
 
 # Sanakirja vuosisatakoodin selvittämiseen
-vuosisata = {'+': 1800, '-': 1900, 'A': 2000}
+vuosisadat = {'+': 1800, '-': 1900, 'A': 2000}
 
 # Sanakirja tarkisteiden hakemiseen
 tarkisteet = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
@@ -21,15 +21,26 @@ tarkisteet = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
 paivatString = henkilotunnus[0] + henkilotunnus[1]
 kuukaudetString = henkilotunnus[2:4]
 vuodetString = henkilotunnus[4:6]
+vuosisatakoodiString = henkilotunnus[6]
+jarjestysnumeroString = henkilotunnus[7:10]
+tarkisteString = henkilotunnus[10]
 
 # Muutetaan merkkijonot numeroiksi
 paivat = int(paivatString)
 kuukaudet = int(kuukaudetString)
 vuodet = int(vuodetString)
+vuosisata = vuosisadat[vuosisatakoodiString]
+syntymavuosi = vuosisata + vuodet
+
+# Muutetaan syntymäajan päivämääräarvot tekstiksi -> syntymäpäivä
+syntymaaikaString = str(paivat) + '.' + str(kuukaudet) + '.' + str(syntymavuosi)
+print(syntymaaikaString)
 
 # Tulostetaan eri henkilötunnuksen osat (päivä, kuukausi, vuosi)
-print('Päivät:', paivatString, 'Kuukaudet:',
-      kuukaudetString, 'Vuosi:', vuodetString)
+# print('Päivät:', paivatString, 'Kuukaudet:',
+#       kuukaudetString, 'Vuosi:', vuodetString,
+#       'Vuosisatakoodi:', vuosisatakoodiString, 'Järjestysnumero: ',
+#       jarjestysnumeroString, 'Tarkiste: ', tarkisteString)
 
 # Tulostetaan syötetty henkilötunnus koneen ruudulle
 # print('Antamasi henkilötunnus oli', henkilotunnus)
