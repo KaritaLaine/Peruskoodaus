@@ -1,7 +1,7 @@
 # HENKILÖTUNNUKSEN TARKISTUSSOVELLUS
 
 # Kysytään käyttäjältä henkilötunnus - merkkijono (string)
-henkilotunnus = input('Anna henkilötunnus: ')
+henkilotunnus = '130829-478N'  # input('Anna henkilötunnus: ')
 
 # Muutetaan henkilötunnus isoihin kirjaimiin
 henkilotunnus = henkilotunnus.upper()
@@ -33,8 +33,9 @@ vuosisata = vuosisadat[vuosisatakoodiString]
 syntymavuosi = vuosisata + vuodet
 
 # Muutetaan syntymäajan päivämääräarvot tekstiksi -> syntymäpäivä
-syntymaaikaString = str(paivat) + '.' + str(kuukaudet) + '.' + str(syntymavuosi)
-print(syntymaaikaString)
+syntymaaikaString = str(paivat) + '.' + \
+    str(kuukaudet) + '.' + str(syntymavuosi)
+print('Syntymäaika: ' + syntymaaikaString)
 
 # Tulostetaan eri henkilötunnuksen osat (päivä, kuukausi, vuosi)
 # print('Päivät:', paivatString, 'Kuukaudet:',
