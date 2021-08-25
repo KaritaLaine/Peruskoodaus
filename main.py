@@ -1,7 +1,7 @@
 # HENKILÖTUNNUKSEN TARKISTUSSOVELLUS
 
 # Kysytään käyttäjältä henkilötunnus - merkkijono (string)
-henkilotunnus = '130829-478N'  # input('Anna henkilötunnus: ')
+henkilotunnus = '130728-478N'  # input('Anna henkilötunnus: ')
 
 # Muutetaan henkilötunnus isoihin kirjaimiin
 henkilotunnus = henkilotunnus.upper()
@@ -25,6 +25,19 @@ vuosisatakoodiString = henkilotunnus[6]
 jarjestysnumeroString = henkilotunnus[7:10]
 tarkisteString = henkilotunnus[10]
 
+# Yhdistetään merkkijonot luvuksi tarkisteen laskentaa varten 130 728 478
+luvutString = paivatString + kuukaudetString + \
+    vuodetString + jarjestysnumeroString
+print('Yhdessä: ' + luvutString)
+
+# Muutetaan se numeroksi (int)
+luvut = int(luvutString)
+
+# Lasketaan jakojäännös 31:llä jaettuna (130829478 % 31) eli modulo 31
+jakojaannos = luvut % 31
+print('Jakojäännös:', jakojaannos)
+
+
 # Muutetaan merkkijonot numeroiksi
 paivat = int(paivatString)
 kuukaudet = int(kuukaudetString)
@@ -32,10 +45,14 @@ vuodet = int(vuodetString)
 vuosisata = vuosisadat[vuosisatakoodiString]
 syntymavuosi = vuosisata + vuodet
 
+# Muutetaan järjestysnumero numeroksi
+jarjestysnumero = int(jarjestysnumeroString)
+
+
 # Muutetaan syntymäajan päivämääräarvot tekstiksi -> syntymäpäivä
 syntymaaikaString = str(paivat) + '.' + \
     str(kuukaudet) + '.' + str(syntymavuosi)
-print('Syntymäaika: ' + syntymaaikaString)
+print('Syntymäaika on ' + syntymaaikaString)
 
 # Tulostetaan eri henkilötunnuksen osat (päivä, kuukausi, vuosi)
 # print('Päivät:', paivatString, 'Kuukaudet:',
