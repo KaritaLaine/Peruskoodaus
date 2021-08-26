@@ -3,25 +3,27 @@
 # Modulien ja kirjastojen lataukset
 import hetutarkistus as ht
 
-# Kysytään käyttäjältä henkilötunnus
-kysytty_hetu = input('Anna henkilötunnus: ')
+hetu_jarkeva = False
+while hetu_jarkeva == False:
+    # Kysytään käyttäjältä henkilötunnus
+    kysytty_hetu = input('Anna henkilötunnus: ')
 
-# Tarkistetaan, että hetu on oikean pituinen
-pituus_oikein = ht.tarkista_pituus(kysytty_hetu)
+    # Tarkistetaan, että hetu on oikean pituinen
+    pituus_oikein = ht.tarkista_pituus(kysytty_hetu)
 
-if pituus_oikein == True:
+    if pituus_oikein == True:
     # Tarkistetaan onko hetu oikein
-    try:
-        oli_oikein = ht.tarkista_hetu(kysytty_hetu)
+        try:
+            oli_oikein = ht.tarkista_hetu(kysytty_hetu)
 
-        # Ilmoitetaan käyttäjälle onko hetu oikein
-        if oli_oikein == True:
-            print('Henkilötunnus OK.')
-            print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
-        else:
-            print('Henkilötunnus väärin, tarkista!')
-    except:
-        print('Virheellinen merkki henkilötunnuksessa, tarkista!')
-else:
-    print('Henkilötunnuksen pituus on väärä, syötä uudelleen!')
-    
+            # Ilmoitetaan käyttäjälle onko hetu oikein
+            if oli_oikein == True:
+                print('Henkilötunnus OK.')
+                print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
+                hetu_jarkeva = True
+            else:
+                print('Henkilötunnus väärin, tarkista!')
+        except:
+            print('Virheellinen merkki henkilötunnuksessa, tarkista!')
+    else:
+        print('Henkilötunnuksen pituus on väärä, syötä uudelleen!')
