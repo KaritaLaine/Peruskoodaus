@@ -11,7 +11,6 @@ def tarkista_hetu(hetu):
         boolean: True, jos oikein, False, jos väärin
     """
 
-
     # Muutetaan henkilötunnus isoihin kirjaimiin
     hetu = hetu.upper()
 
@@ -31,7 +30,8 @@ def tarkista_hetu(hetu):
     tarkisteString = hetu[10]
 
     # Yhdistetään merkkijonot luvuksi tarkisteen laskentaa varten 130 728 478
-    luvutString = paivatString + kuukaudetString + vuodetString + jarjestysnumeroString
+    luvutString = paivatString + kuukaudetString + \
+        vuodetString + jarjestysnumeroString
 
     # Muutetaan se numeroksi (int)
     luvut = int(luvutString)
@@ -49,3 +49,38 @@ def tarkista_hetu(hetu):
         oikein = False
 
     return oikein
+
+
+def tarkista_pituus(hetu):
+    """Tarkistaa henkilötunnuksen pituuden
+
+    Args:
+        hetu (string): Henkilötunnus
+
+    Returns:
+        boolean: True: pituus oikein, False: pituus väärin
+    """
+
+    # Lasketaan henkilötunnuksen pituus
+    pituus = len(hetu)
+
+    if pituus == 11:
+        pituus_ok = True
+    else:
+        pituus_ok = False
+
+    return pituus_ok
+
+def selvita_sukupuoli(hetu):
+    """Selvittää järjestysnumeron perusteella sukupuolen: parillinen -> nainen, pariton -> mies
+
+    Args:
+        hetu (string): Henkilötunnus
+    
+    Returns:
+        string: Nainen tai mies
+    """
+
+    jarjestysnumeroString = hetu[7:10]
+    
+    return sukupuoli
