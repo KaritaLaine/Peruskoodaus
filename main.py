@@ -20,10 +20,14 @@ while hetu_jarkeva == False:
             if oli_oikein == True:
                 print('Henkilötunnus OK.')
                 print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
+                print('Syntymäaika:', ht.syntymapaiva(kysytty_hetu))
                 hetu_jarkeva = True
             else:
                 print('Henkilötunnus väärin, tarkista!')
+                hetu_jarkeva = False
         except:
             print('Virheellinen merkki henkilötunnuksessa, tarkista!')
+            hetu_jarkeva = False
     else:
         print('Henkilötunnuksen pituus on väärä, syötä uudelleen!')
+        hetu_jarkeva = False
