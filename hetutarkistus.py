@@ -82,5 +82,16 @@ def selvita_sukupuoli(hetu):
     """
 
     jarjestysnumeroString = hetu[7:10]
-    
+
+    # Muutetaan se luvuksi
+    jarjestysnumero = int(jarjestysnumeroString)
+
+    # Lasketaan jakojäännös modulo 2
+    jakojaannos = jarjestysnumero % 2
+
+    # Jos jakojäännös on 0 -> nainen, muutoin mies
+    if jakojaannos == 0:
+        sukupuoli = 'Nainen.'
+    else: 
+        sukupuoli = 'Mies.'
     return sukupuoli

@@ -16,6 +16,7 @@ if pituus_oikein == True:
     # Ilmoitetaan käyttäjälle onko hetu oikein
     if oli_oikein == True:
         print('Henkilötunnus OK.')
+        print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
     else:
         print('Henkilötunnus väärin, tarkista!')
 else:
