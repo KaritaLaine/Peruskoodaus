@@ -11,13 +11,17 @@ pituus_oikein = ht.tarkista_pituus(kysytty_hetu)
 
 if pituus_oikein == True:
     # Tarkistetaan onko hetu oikein
-    oli_oikein = ht.tarkista_hetu(kysytty_hetu)
+    try:
+        oli_oikein = ht.tarkista_hetu(kysytty_hetu)
 
-    # Ilmoitetaan käyttäjälle onko hetu oikein
-    if oli_oikein == True:
-        print('Henkilötunnus OK.')
-        print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
-    else:
-        print('Henkilötunnus väärin, tarkista!')
+        # Ilmoitetaan käyttäjälle onko hetu oikein
+        if oli_oikein == True:
+            print('Henkilötunnus OK.')
+            print('Sukupuoli:', ht.selvita_sukupuoli(kysytty_hetu))
+        else:
+            print('Henkilötunnus väärin, tarkista!')
+    except:
+        print('Virheellinen merkki henkilötunnuksessa, tarkista!')
 else:
     print('Henkilötunnuksen pituus on väärä, syötä uudelleen!')
+    
