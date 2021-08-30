@@ -6,7 +6,11 @@ import datetime
 # Globaalit muuttujat
 
 # Sanakirja, jossa vuotisatakoodit
-vuosisadat = {'+': 1800, '-': 1900, 'A': 2000}
+vuosisadat = {
+    '+': 1800,
+    '-': 1900,
+    'A': 2000
+}
 
 # Sanakirja, jossa jakojäännösten koodit
 tarkisteet = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
@@ -17,7 +21,8 @@ nyt = datetime.datetime.now()
 
 # Modulin funktiot
 
-def tarkista_hetu(hetu):
+
+def onko_hetu_oikeanlainen(hetu):
     """Tarkistaa, että henkilötunnus on oikein muodostettu
     käyttäen modulo 31 tarkistetta
 
@@ -32,7 +37,7 @@ def tarkista_hetu(hetu):
     hetu = hetu.upper()
 
     tarkisteet = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
-              5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F', 16: 'H', 17: 'J', 18: 'K', 19: 'L', 20: 'M', 21: 'N', 22: 'P', 23: 'R', 24: 'S', 25: 'T', 26: 'U', 27: 'V', 28: 'W', 29: 'X', 30: 'Y'}
+                  5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F', 16: 'H', 17: 'J', 18: 'K', 19: 'L', 20: 'M', 21: 'N', 22: 'P', 23: 'R', 24: 'S', 25: 'T', 26: 'U', 27: 'V', 28: 'W', 29: 'X', 30: 'Y'}
 
     paivatString = hetu[0] + hetu[1]
     kuukaudetString = hetu[2:4]
@@ -63,7 +68,7 @@ def tarkista_hetu(hetu):
     return oikein
 
 
-def tarkista_pituus(hetu):
+def onko_pituus_oikein(hetu):
     """Tarkistaa henkilötunnuksen pituuden
 
     Args:
@@ -76,10 +81,14 @@ def tarkista_pituus(hetu):
     # Lasketaan henkilötunnuksen pituus
     pituus = len(hetu)
 
+    # tapa 1
     if pituus == 11:
         pituus_ok = True
     else:
         pituus_ok = False
+
+    # vaihtoehtoinen tapa
+    # pituus_ok = (pituus == 11)
 
     return pituus_ok
 
@@ -94,6 +103,9 @@ def selvita_sukupuoli(hetu):
         string: Nainen tai mies
     """
 
+
+
+    # Otetaan hetusta järjestysnumero-osa
     jarjestysnumeroString = hetu[7:10]
 
     # Muutetaan se luvuksi
@@ -120,7 +132,7 @@ def syntymapaiva(hetu):
         string: syntymäaika
     """
 
-    paivatString = hetu[0] + hetu[1]
+    paivatString = hetu[0] + hetu[1] # = hetu[0:2]
     kuukaudetString = hetu[2:4]
     vuodetString = hetu[4:6]
     vuosisatakoodiString = hetu[6]
@@ -133,6 +145,7 @@ def syntymapaiva(hetu):
 
     return syntymaika
 
+
 def laske_ika(hetu):
     paivatString = hetu[0] + hetu[1]
     paivat = int(paivatString)
@@ -140,7 +153,6 @@ def laske_ika(hetu):
     kuukaudet = int(kuukaudetString)
     vuodetString = hetu[4:6]
     vuosisatakoodiString = hetu[6]
-
 
     vuosisata = vuosisadat[vuosisatakoodiString]
     syntymavuosi = vuosisata + int(vuodetString)
@@ -155,4 +167,4 @@ def laske_ika(hetu):
 # Testataan erilaisia toimintoja kun tämä tiedosto ajetaan suoraan
 if __name__ == '__main__':
     print(nyt)
-    print('Ikä on', laske_ika('130728-478N'))
+    print('Ikä on', laske_ika('130728-478N'), 'vuotta.')
