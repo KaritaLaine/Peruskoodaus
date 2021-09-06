@@ -5,6 +5,7 @@ VUOSISADAT = {
      '-': 1900,
      'A': 2000,
  }
+ 
 def sukupuoli(hetu):
      toiseksi_viimeinen_merkki = hetu[-2]
      luku = int(toiseksi_viimeinen_merkki)
@@ -20,8 +21,10 @@ def syntymapaiva(hetu):
      return paivays.replace(year=(vuosisata + (paivays.year % 100)))
 
 def ika(hetu):
-     paivays = syntymapaiva(hetu)
-
-     # FIXME: Laske ikä oikein
-     aikaero = datetime.date.today() - paivays
-     return aikaero.total_seconds() / 3600 / 24 / 365
+     syntynyt = syntymapaiva(hetu)
+     tanaan = datetime.date.today()
+     vuosiero = tanaan.year - syntynyt
+     synttarit_tana_vuonna = syntynyt.replace(year=tanaan.year)
+     if synttarit_tana_vuonna < tanaan:
+          return vuosiero - 1
+     return vuosiero
